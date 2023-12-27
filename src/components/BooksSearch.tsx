@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Book from "./Book";
+import '../styles/global.css';
+import {IBook} from "./Book";
 
-export interface Book {
-    id: number;
-    volumeInfo: {
-        title: string;
-        authors: string[];
-    };
-}
 
-const BookSearch = () => {
+
+
+const BooksSearch = () => {
     const [query, setQuery] = useState('');
-    const [books, setBooks] = useState<Book[]>([]);
+    const [books, setBooks] = useState<IBook[]>([]);
+    const [totalItems, setTotalItems] = useState(0);
 
     const searchBooks = async () => {
         try {
@@ -19,33 +18,38 @@ const BookSearch = () => {
                 `https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyCb02oH6jcaRnMaw-_YOzFY82CbO7mQWIg`
             );
             setBooks(response.data.items || []);
+            setTotalItems(response.data.totalItems || null);
+
         } catch (error) {
             console.log('Error fetching data', error);
         }
     };
 
     return (
-        <div>
+        <section className="searchBooks">
             <input
                 type="text"
                 placeholder="Search for books"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
             />
-            <button onClick={searchBooks}>Search</button>
+            <button className="searchBtn" onClick={searchBooks}>Search</button>
 
-            <ul>
+            <div className="books-number">
+                {books.length > 0 && (
+                    <p>Total number of books found by query is: {totalItems}</p>
+                )}
+            </div>
+            <div className="book-list">
                 {books?.length === 0
                     ? "no books"
-                    : books?.map((book: Book) => (
-                        <li key={book.id}>
-                            {book.volumeInfo.title} by {book.volumeInfo.authors?.join(', ')}
-                        </li>
+                    : books.map((book: IBook) => (
+                        <Book key={book.id} book={book} />
                     ))}
-            </ul>
-        </div>
+            </div>
+        </section>
     );
 
 };
 
-export default BookSearch;
+export default BooksSearch;
