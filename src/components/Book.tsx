@@ -25,7 +25,9 @@ export interface IBook {
 }
 
 
-const Book = ({ book }: { book: IBook }) => {
+
+
+const Book = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IBook) => void}) => {
     return (
         <div className="column">
             <div className="book-card">
@@ -41,7 +43,12 @@ const Book = ({ book }: { book: IBook }) => {
                     />
                     ) : (
                         <p>No price</p>
-                )}
+                    )}
+                <div className="addToCart">
+                    <button className="addBtn" onClick={() => addToFavorites(book)}>
+                        Add to cart
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import axios from "axios";
 import Book from "./Book";
 import '../styles/global.css';
 import {IBook} from "./Book";
+import Cart from "./Cart";
 
 
 
@@ -10,7 +11,12 @@ import {IBook} from "./Book";
 const BooksSearch = () => {
     const [query, setQuery] = useState('');
     const [books, setBooks] = useState<IBook[]>([]);
+    const [favBooks, setFavs] = useState<IBook[]>([]);
     const [totalItems, setTotalItems] = useState(0);
+
+    const addToFavorites = (book: IBook) => {
+        setFavs([...favBooks, book]);
+    };
 
     const searchBooks = async () => {
         try {
@@ -27,6 +33,9 @@ const BooksSearch = () => {
 
     return (
         <section className="searchBooks">
+            <div className="cart">
+                <Cart favBooks={favBooks} />
+            </div>
             <input
                 type="text"
                 placeholder="Search for books"
@@ -44,7 +53,7 @@ const BooksSearch = () => {
                 {books?.length === 0
                     ? "no books"
                     : books.map((book: IBook) => (
-                        <Book key={book.id} book={book} />
+                        <Book key={book.id} book={book} addToFavorites={addToFavorites}/>
                     ))}
             </div>
         </section>
