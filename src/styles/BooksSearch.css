@@ -1,15 +1,9 @@
-body {
-    background-color: seashell;
-}
+
 .searchBooks {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 15px;
-}
-
-.searchBtn {
-    margin-top: 15px;
+    gap: 1rem;
 }
 
 .book-list {

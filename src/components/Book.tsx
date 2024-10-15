@@ -29,26 +29,24 @@ export interface IBook {
 
 const Book = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IBook) => void}) => {
     return (
-        <div className="column">
-            <div className="book-card">
-                <p>Title: {book.volumeInfo.title}</p>
-                <Author authors={book.volumeInfo.authors} />
-                <p>Publication date: {book.volumeInfo.publishedDate}</p>
-                <p>Page count: {book.volumeInfo.pageCount}</p>
-                <p>Categories: {book.volumeInfo.categories}</p>
-                {book.saleInfo.listPrice && book.saleInfo.listPrice.amount && book.saleInfo.listPrice.currencyCode ? (
-                    <BookPrice
-                        price={book.saleInfo.listPrice.amount}
-                        currencyCode={book.saleInfo.listPrice.currencyCode}
-                    />
-                    ) : (
-                        <p>No price</p>
-                    )}
-                <div className="addToCart">
-                    <button className="addBtn" onClick={() => addToFavorites(book)}>
-                        Add to cart
-                    </button>
-                </div>
+        <div className="book-card">
+            <p className="book-title">Title: {book.volumeInfo.title}</p>
+            <Author authors={book.volumeInfo.authors} />
+            <p className="book-info">Publication date: {book.volumeInfo.publishedDate}</p>
+            <p className="book-info">Page count: {book.volumeInfo.pageCount}</p>
+            <p className="book-info">Categories: {book.volumeInfo.categories?.join(', ') || 'Unknown'}</p>
+            {book.saleInfo.listPrice && book.saleInfo.listPrice.amount && book.saleInfo.listPrice.currencyCode ? (
+                <BookPrice
+                    price={book.saleInfo.listPrice.amount}
+                    currencyCode={book.saleInfo.listPrice.currencyCode}
+                />
+            ) : (
+                <p className="book-info">No price</p>
+            )}
+            <div className="addToCart">
+                <button className="addBtn" onClick={() => addToFavorites(book)}>
+                    Add to cart
+                </button>
             </div>
         </div>
     );

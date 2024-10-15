@@ -1,5 +1,8 @@
 * {
   font-family: 'Montserrat', sans-serif;
-  font-size: 26px;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #e2f1e5;
+}

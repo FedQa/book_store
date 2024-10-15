@@ -1,17 +1,20 @@
 import React from "react";
 import {IBook} from "./Book";
+import './../styles/Cart.css'
 
 interface CartProps {
-    favBooks: IBook[];
+    booksInCart: IBook[];
 }
 
-const Cart = ({favBooks} : CartProps) => {
+const Cart = ({booksInCart} : CartProps) => {
     return (
         <div>
-            <h2>Cart</h2>
+            <h2 className="cart__header">Cart</h2>
             <ul>
-                {favBooks.map((book: IBook, index: number) => (
-                    <li key={index}>{book.volumeInfo.title}</li>
+                {booksInCart.map((book: IBook) => (
+                    <li key={book.id}>
+                        {book.volumeInfo.title} {book.saleInfo.listPrice?.amount} {book.saleInfo.listPrice?.currencyCode}
+                    </li>
                 ))}
             </ul>
         </div>
