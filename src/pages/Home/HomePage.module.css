@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    gap: 1rem;
+
+    .searchElements {
+        display: flex;
+        gap: 1em;
+    }
+}

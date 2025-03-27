@@ -1,5 +1,4 @@
-import React from "react";
-import "../styles/Book.css";
+import "./BookCard/Book.css";
 import "../styles/BooksDescription.css";
 
 

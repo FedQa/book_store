@@ -1,33 +1,12 @@
 import React from "react";
-import Author from "./Author";
-import "../styles/Book.css";
-import "../styles/BooksSearch.css";
-import BookPrice from "./BookPrice";
+import Author from "../Author";
+import "./Book.css";
+import "../../styles/BooksSearch.css";
+import BookPrice from "../BookPrice";
+import {IBook} from "../../interfaces/interfaces";
 
 
-export interface IBook {
-    id: number;
-    totalItems: number;
-    volumeInfo: {
-        title: string;
-        authors: string[];
-        publishedDate: number;
-        description: string;
-        pageCount: number;
-        categories: [];
-    };
-    saleInfo: {
-        listPrice: {
-            amount?: number,
-            currencyCode?: "RUB"
-        },
-    }
-}
-
-
-
-
-const Book = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IBook) => void}) => {
+const BookCard = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IBook) => void}) => {
     return (
         <div className="book-card">
             <p className="book-title">Title: {book.volumeInfo.title}</p>
@@ -54,4 +33,4 @@ const Book = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IB
 
 
 
-export default Book;
+export default BookCard;

@@ -1,10 +1,6 @@
 import React from "react";
-import {IBook} from "./Book";
-import './../styles/Cart.css'
-
-interface CartProps {
-    booksInCart: IBook[];
-}
+import './Cart.css'
+import {CartProps, IBook} from "../../interfaces/interfaces";
 
 const Cart = ({booksInCart} : CartProps) => {
     return (
