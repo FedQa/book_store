@@ -18,6 +18,7 @@ export const HomePage = () => {
         const response = await axios.get(getBooks(
             {
                 query: inputValue,
+                maxResults: 25,
             }
         ));
 
@@ -29,15 +30,21 @@ export const HomePage = () => {
             <Title title="Book search"></Title>
             <div className={cs.searchElements}>
                 <div className={cs.searchInput}>
-                    <SearchIcon />
+                    <SearchIcon
+                        className={cs.icon}
+                        pathColor="black"
+                        iconSettings={{height: 16, width: 16}}
+                    />
                     <Input
+                        className={cs.input}
                         value={inputValue}
+                        onChange={(e: any) => setInputValue(e.target.value)}
                         type="text"
                         placeholder="book..."
                     />
                 </div>
                 <Button
-                    //onClick={searchHandle}
+                    onClick={searchHandle}
                     name="search"
                 />
             </div>

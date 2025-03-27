@@ -2,14 +2,14 @@
 import cs from './Button.module.css';
 
 export interface ButtonProps {
-    clickFn?: () => void | Promise<void>;
+    onClick?: () => void | Promise<void>;
     name?: string;
 }
 
 export const Button = (props: ButtonProps) => {
     return (
         <button
-            onClick={props.clickFn}
+            onClick={props.onClick}
             className={cs.button}
         >{props.name}</button>
     )
