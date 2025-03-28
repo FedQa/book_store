@@ -1,27 +1,25 @@
 export interface IBook {
-    id: number;
-    totalItems: number;
+    id: string;
     volumeInfo: {
         title: string;
         authors: string[];
-        publishedDate: number;
+        publisher: string;
+        publishedDate: string;
         description: string;
         pageCount: number;
-        categories: [];
+        categories: string[];
+        language: string;
     };
-    saleInfo: {
+    saleInfo?: {
+        country: string;
         listPrice: {
-            amount?: number,
-            currencyCode?: "RUB"
-        },
+            amount: number;
+            currencyCode: string;
+        }
     }
 }
 
 export interface BookPriceProps {
     price?: number;
     currencyCode?: string;
-}
-
-export interface CartProps {
-    booksInCart: IBook[];
 }

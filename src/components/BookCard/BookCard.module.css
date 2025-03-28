@@ -1,0 +1,16 @@
+
+
+.bookCard {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg-color);
+    border-radius: var(--card-border-radius);
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 80vw;
+    height: 80vh;
+
+    .title {
+        text-align: center;
+    }
+}

@@ -1,36 +1,42 @@
-import React from "react";
-import Author from "../Author";
-import "./Book.css";
-import "../../styles/BooksSearch.css";
-import BookPrice from "../BookPrice";
 import {IBook} from "../../interfaces/interfaces";
+// @ts-ignore
+import cs from './BookCard.module.css'
+import {Button} from "../Button/Button";
 
+type BookCardProps = {
+    book: IBook;
+    className?: string;
+}
 
-const BookCard = ({ book, addToFavorites }: { book: IBook; addToFavorites: (book: IBook) => void}) => {
+//title: string
+// authors: string[]
+// publisher: string
+// publishedDate: string
+// description: string
+// pageCount: number
+// categories: string[]
+// language: string
+
+export const BookCard = (props: BookCardProps) => {
+    const {book} = props;
+    console.log("book: ", book);
+
+    const handleAddToCart = () => {
+
+    }
     return (
-        <div className="book-card">
-            <p className="book-title">Title: {book.volumeInfo.title}</p>
-            <Author authors={book.volumeInfo.authors} />
-            <p className="book-info">Publication date: {book.volumeInfo.publishedDate}</p>
-            <p className="book-info">Page count: {book.volumeInfo.pageCount}</p>
-            <p className="book-info">Categories: {book.volumeInfo.categories?.join(', ') || 'Unknown'}</p>
-            {book.saleInfo.listPrice && book.saleInfo.listPrice.amount && book.saleInfo.listPrice.currencyCode ? (
-                <BookPrice
-                    price={book.saleInfo.listPrice.amount}
-                    currencyCode={book.saleInfo.listPrice.currencyCode}
-                />
-            ) : (
-                <p className="book-info">No price</p>
-            )}
-            <div className="addToCart">
-                <button className="addBtn" onClick={() => addToFavorites(book)}>
-                    Add to cart
-                </button>
-            </div>
+        <div className={cs.bookCard}>
+            <h3 className={cs.title}>{book.volumeInfo.title}</h3>
+            <span className={cs.authors}>{book.volumeInfo.authors}</span>
+            <span className={cs.description}>{book.volumeInfo.description}</span>
+
+
+            <span className={cs.amount}>{book.saleInfo?.listPrice?.amount}</span>
+            <span className={cs.currencyCode}>{book.saleInfo?.listPrice?.currencyCode}</span>
+
+            <Button name="Add to cart"
+                    onClick={handleAddToCart}
+            />
         </div>
-    );
-};
-
-
-
-export default BookCard;
+    )
+}

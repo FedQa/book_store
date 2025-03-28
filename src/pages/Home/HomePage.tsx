@@ -7,23 +7,28 @@ import axios from "axios";
 import {getBooks} from "../../API/api";
 import {useState} from "react";
 import {SearchIcon} from "../../components/SearchIcon/SearchIcon";
+import {useNavigate} from "react-router-dom";
 
 
 export const HomePage = () => {
     const [inputValue, setInputValue] = useState("");
+    const navigate = useNavigate();
 
     const searchHandle = async () => {
-        // search
+        try {
+            const response = await axios.get(getBooks(
+                {
+                    query: inputValue,
+                    maxResults: 25,
+                }
+            ));
+            const books = await response.data;
+            navigate("/books" , {state: books});
 
-        const response = await axios.get(getBooks(
-            {
-                query: inputValue,
-                maxResults: 25,
-            }
-        ));
-
-        const books = await response.data;
-        console.log(books);
+        }
+        catch(error) {
+            console.error("Ошибка при загрузке книг:", error);
+        }
     }
     return (
         <div className={cs.wrapper}>

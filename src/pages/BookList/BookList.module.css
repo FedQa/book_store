@@ -1,0 +1,18 @@
+
+.swiperWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 50px;
+
+    .slide {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.swiper-pagination {
+    display: flex;
+    align-items: flex-end;
+}

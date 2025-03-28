@@ -1,19 +1,8 @@
-import React from "react";
-import './Cart.css'
-import {CartProps, IBook} from "../../interfaces/interfaces";
 
-const Cart = ({booksInCart} : CartProps) => {
+
+const Cart = () => {
     return (
-        <div>
-            <h2 className="cart__header">Cart</h2>
-            <ul>
-                {booksInCart.map((book: IBook) => (
-                    <li key={book.id}>
-                        {book.volumeInfo.title} {book.saleInfo.listPrice?.amount} {book.saleInfo.listPrice?.currencyCode}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <div>Cart</div>
     )
 }
 

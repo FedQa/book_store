@@ -9,7 +9,9 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.65",
     "axios": "^1.6.2",
+    "react-router-dom": "^7.4.0",
     "react-scripts": "5.0.1",
+    "swiper": "^11.2.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
