@@ -2,7 +2,8 @@
   --main-bg-color: #fff;
   --text-color: #000;
 
-  --card-bg-color: #d0cccc;
+  --card-bg-color: gray;
+  --card-text-color: #fff;
   --card-border-radius: 5px;
 }
 

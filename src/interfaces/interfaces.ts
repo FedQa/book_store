@@ -9,6 +9,9 @@ export interface IBook {
         pageCount: number;
         categories: string[];
         language: string;
+        imageLinks?: {
+            thumbnail: string;
+        }
     };
     saleInfo?: {
         country: string;

@@ -3,5 +3,12 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    width: 100px;
+    width: 150px;
+    height: 35px;
+    color: limegreen;
+    font-size: 1.15em;
+}
+
+.button:active {
+    scale: 1.03;
 }

@@ -2,15 +2,55 @@
 
 .bookCard {
     display: flex;
+    align-items: center;
     flex-direction: column;
     background-color: var(--card-bg-color);
+    color: var(--card-text-color);
     border-radius: var(--card-border-radius);
     gap: 1rem;
     padding: 0.5rem;
     width: 80vw;
     height: 80vh;
 
-    .title {
-        text-align: center;
+    .columns {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: flex-start;
+    }
+
+    .title, .authors {
+        font-size: 2em;
+    }
+    .description {
+        text-align: start;
+        font-size: 1.25em;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .priceWrapper {
+        display: flex;
+        gap: 1em;
+    }
+
+
+    .previewImage {
+        width: 30vw;
+        height: 30vh;
+    }
+
+    .addToCartBtn {
+        display: flex;
+        align-items: flex-end;
     }
 }

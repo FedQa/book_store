@@ -3,6 +3,7 @@ import cs from './Button.module.css';
 
 export interface ButtonProps {
     onClick?: () => void | Promise<void>;
+    className?: string;
     name?: string;
 }
 
